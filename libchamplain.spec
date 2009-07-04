@@ -17,8 +17,9 @@ Group:		Graphical desktop/GNOME
 URL:		http://blog.pierlux.com/projects/libchamplain/en/
 Source0:	http://libchamplain.pierlux.com/release/latest/%{name}-%{version}.tar.gz
 BuildRequires: 	clutter-cairo-devel >= 0.8
-BuildRequires:	libclutter-gtk0.8-devel
+BuildRequires:	pkgconfig(clutter-gtk-0.8)
 BuildRequires: 	libsoup-devel
+BuildRequires:	gtk-doc
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
