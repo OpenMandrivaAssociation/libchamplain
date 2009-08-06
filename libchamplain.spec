@@ -11,7 +11,7 @@
 Summary:	Map view for Clutter
 Name:		libchamplain
 Version:	0.3.6
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	LGPLv2+
 Group:		Graphical desktop/GNOME 
 URL:		http://blog.pierlux.com/projects/libchamplain/en/
@@ -50,6 +50,7 @@ Summary:	Development files for %{name}
 Group:		Development/GNOME and GTK+
 Requires:	%libname = %{version}
 Requires:	%libgtkname = %{version}
+Provides:	%name-%devel = %version-%release
 
 %description -n %{develname}
 This package contains development files for %{name}.
