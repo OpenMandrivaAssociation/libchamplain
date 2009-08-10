@@ -18,7 +18,7 @@ URL:		http://blog.pierlux.com/projects/libchamplain/en/
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 BuildRequires:	clutter-gtk-devel >= 0.10
 BuildRequires: 	libsoup-devel
-BuildRequires:  gobject-introspection-devel
+BuildRequires:  gobject-introspection-devel gir-repository
 BuildRequires:	gtk-doc
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
