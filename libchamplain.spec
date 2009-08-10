@@ -10,16 +10,15 @@
 
 Summary:	Map view for Clutter
 Name:		libchamplain
-Version:	0.3.6
-Release:	%mkrel 2
+Version:	0.3.90
+Release:	%mkrel 1
 License:	LGPLv2+
 Group:		Graphical desktop/GNOME 
 URL:		http://blog.pierlux.com/projects/libchamplain/en/
-Source0:	http://libchamplain.pierlux.com/release/latest/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 BuildRequires:	clutter-gtk-devel >= 0.10
 BuildRequires: 	libsoup-devel
-#gw introspection support broken in 0.3.6
-#BuildRequires:  gobject-introspection-devel
+BuildRequires:  gobject-introspection-devel
 BuildRequires:	gtk-doc
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
@@ -97,4 +96,8 @@ rm -rf %{buildroot}
 %dir %{_includedir}/%{name}-gtk-%{libgtkver}
 %dir %{_includedir}/%{name}-gtk-%{libgtkver}/champlain-gtk/
 %{_includedir}/%{name}-gtk-%{libgtkver}/champlain-gtk/*.h
+%_libdir/girepository-1.0/Champlain-%libver.typelib
+%_libdir/girepository-1.0/GtkChamplain-%libver.typelib
+%_datadir/gir-1.0/Champlain-%libver.gir
+%_datadir/gir-1.0/GtkChamplain-%libver.gir
 
