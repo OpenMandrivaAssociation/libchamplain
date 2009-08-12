@@ -11,7 +11,7 @@
 Summary:	Map view for Clutter
 Name:		libchamplain
 Version:	0.3.90
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	LGPLv2+
 Group:		Graphical desktop/GNOME 
 URL:		http://blog.pierlux.com/projects/libchamplain/en/
@@ -71,11 +71,12 @@ rm -rf %{buildroot}
 %files -n %{libname}
 %defattr(-,root,root,-)
 %{_libdir}/%{name}-%{libver}.so.%{major}*
+%_libdir/girepository-1.0/Champlain-%libver.typelib
 
 %files -n %{libgtkname}
 %defattr(-,root,root,-)
 %{_libdir}/%{name}-gtk-%{libgtkver}.so.%{gtkmajor}*
-
+%_libdir/girepository-1.0/GtkChamplain-%libver.typelib
 
 %files -n %{develname}
 %defattr(-,root,root,-)
@@ -96,8 +97,6 @@ rm -rf %{buildroot}
 %dir %{_includedir}/%{name}-gtk-%{libgtkver}
 %dir %{_includedir}/%{name}-gtk-%{libgtkver}/champlain-gtk/
 %{_includedir}/%{name}-gtk-%{libgtkver}/champlain-gtk/*.h
-%_libdir/girepository-1.0/Champlain-%libver.typelib
-%_libdir/girepository-1.0/GtkChamplain-%libver.typelib
 %_datadir/gir-1.0/Champlain-%libver.gir
 %_datadir/gir-1.0/GtkChamplain-%libver.gir
 
