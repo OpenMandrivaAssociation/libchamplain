@@ -1,6 +1,6 @@
-%define libver 0.3
+%define libver 0.4
 %define libgtkver %{libver}
-%define major 3
+%define major 0
 %define gtkmajor %{major}
 
 %define libname		%mklibname champlain %{libver} %{major}
@@ -10,7 +10,7 @@
 
 Summary:	Map view for Clutter
 Name:		libchamplain
-Version:	0.3.92
+Version:	0.4.0
 Release:	%mkrel 1
 License:	LGPLv2+
 Group:		Graphical desktop/GNOME 
