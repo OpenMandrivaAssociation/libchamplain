@@ -20,6 +20,8 @@ Patch:		libchamplain-0.3.90-new-gobject-introspection.patch
 BuildRequires:	clutter-gtk-devel >= 0.10
 BuildRequires: 	libsoup-devel
 BuildRequires:  gobject-introspection-devel gir-repository
+#gw python binding:
+#BuildRequires:  python-clutter-gtk-devel libGConf2-devel 
 BuildRequires:	gtk-doc
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
@@ -51,6 +53,7 @@ Group:		Development/GNOME and GTK+
 Requires:	%libname = %{version}
 Requires:	%libgtkname = %{version}
 Provides:	%name-devel = %version-%release
+Obsoletes:	%mklibname champlain 0.3 -d
 
 %description -n %{develname}
 This package contains development files for %{name}.
