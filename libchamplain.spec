@@ -7,6 +7,11 @@
 %define libgtkname	%mklibname champlain-gtk %{libgtkver} %{gtkmajor}
 %define develname	%mklibname champlain %{libver} -d
 
+%define build_perl 1
+%define bootstrap 0
+%if %bootstrap
+%define build_perl 0
+%endif
 
 Summary:	Map view for Clutter
 Name:		libchamplain
@@ -25,11 +30,6 @@ BuildRequires:  python-clutter-gtk-devel
 BuildRequires:  python-clutter-devel
 BuildRequires:  libGConf2-devel 
 BuildRequires:  pygtk2.0-devel
-#gw perl binding:
-BuildRequires: perl-Clutter 
-BuildRequires: perl-devel
-BuildRequires: perl-ExtUtils-Depends
-BuildRequires: perl-ExtUtils-PkgConfig
 #gw Csharp binding
 #BuildRequires: clutter-gtk-sharp
 BuildRequires:	gtk-doc
@@ -68,14 +68,21 @@ Obsoletes:	%mklibname champlain 0.3 -d
 %description -n %{develname}
 This package contains development files for %{name}.
 
+%if %build_perl
 %package -n perl-Champlain
 Summary: Perl bindings for %name
 Group: Development/Perl
 Requires: %libname = %version
+#gw makefile problem
+BuildRequires: %develname
+BuildRequires: perl-Clutter 
+BuildRequires: perl-devel
+BuildRequires: perl-ExtUtils-Depends
+BuildRequires: perl-ExtUtils-PkgConfig
 
 %description -n perl-Champlain
 This package contains Perl bindings for %{name}.
-
+%endif
 
 %package -n python-champlain
 Summary: Python bindings for %name
@@ -95,9 +102,11 @@ autoreconf -fi
 %configure2_5x --disable-static --enable-gtk-doc --enable-python
 %make
 
+%if %build_perl
 cd bindings/perl/Champlain
 perl Makefile.PL INSTALLDIRS=vendor
 make CFLAGS="%{optflags}"
+%endif
 
 %install
 rm -rf ${buildroot}
@@ -105,6 +114,7 @@ rm -rf ${buildroot}
 cp -r bindings/python/demos .
 rm -f demos/Makefile*
 
+%if %build_perl
 cd bindings/perl/Champlain
 %makeinstall_std
 
@@ -112,6 +122,7 @@ cd bindings/perl/Champlain
 #gw fails:
 cd bindings/perl/Champlain
 #make test
+%endif
 
 %clean
 rm -rf %{buildroot}
@@ -148,12 +159,14 @@ rm -rf %{buildroot}
 %_datadir/gir-1.0/Champlain-%libver.gir
 %_datadir/gir-1.0/GtkChamplain-%libver.gir
 
+%if %build_perl
 %files -n perl-Champlain
 %defattr(-,root,root,-)
 %doc bindings/perl/Champlain/README
 %{perl_vendorarch}/Champlain*
 %{perl_vendorarch}/auto/Champlain
 %_mandir/man3/Champlain*.3pm*
+%endif
 
 %files -n python-champlain
 %defattr(-,root,root,-)
