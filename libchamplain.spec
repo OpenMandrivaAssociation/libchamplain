@@ -26,7 +26,9 @@ BuildRequires:  python-clutter-devel
 BuildRequires:  libGConf2-devel 
 BuildRequires:  pygtk2.0-devel
 #gw perl binding:
-BuildRequires: perl-Clutter perl-devel
+BuildRequires: perl-Clutter 
+BuildRequires: perl-devel
+BuildRequires: perl-Extutils-Depends
 #gw Csharp binding
 #BuildRequires: clutter-gtk-sharp
 BuildRequires:	gtk-doc
