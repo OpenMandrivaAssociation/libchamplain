@@ -28,7 +28,7 @@ BuildRequires:  pygtk2.0-devel
 #gw perl binding:
 BuildRequires: perl-Clutter 
 BuildRequires: perl-devel
-BuildRequires: perl-Extutils-Depends
+BuildRequires: perl-ExtUtils-Depends
 #gw Csharp binding
 #BuildRequires: clutter-gtk-sharp
 BuildRequires:	gtk-doc
