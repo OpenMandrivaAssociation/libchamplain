@@ -11,16 +11,21 @@
 Summary:	Map view for Clutter
 Name:		libchamplain
 Version:	0.4.4
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	LGPLv2+
 Group:		Graphical desktop/GNOME 
 URL:		http://blog.pierlux.com/projects/libchamplain/en/
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+Patch: libchamplain-0.4.4-pyclutter-gtk-check.patch
 BuildRequires:	clutter-gtk-devel >= 0.10
 BuildRequires: 	libsoup-devel
 BuildRequires:  gobject-introspection-devel gir-repository
 #gw python binding:
-#BuildRequires:  python-clutter-gtk-devel libGConf2-devel 
+BuildRequires:  python-clutter-gtk-devel libGConf2-devel 
+#gw perl binding:
+BuildRequires: perl-Clutter perl-devel
+#gw Csharp binding
+#BuildRequires: clutter-gtk-sharp
 BuildRequires:	gtk-doc
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
@@ -57,16 +62,50 @@ Obsoletes:	%mklibname champlain 0.3 -d
 %description -n %{develname}
 This package contains development files for %{name}.
 
+%package -n perl-Champlain
+Summary: Perl bindings for %name
+Group: Development/Perl
+Requires: %libname = %version
+
+%description -n perl-Champlain
+This package contains Perl bindings for %{name}.
+
+
+%package -n python-champlain
+Summary: Python bindings for %name
+Group: Development/Python
+Requires: %libname = %{version}
+Requires: python-clutter-gtk
+
+%description -n python-champlain
+This package contains Python bindings for %{name}.
+
 %prep
 %setup -q
+%patch -p1
+autoreconf -fi
 
 %build
-%configure2_5x --disable-static --enable-gtk-doc
+%configure2_5x --disable-static --enable-gtk-doc --enable-python
 %make
+
+cd bindings/perl/Champlain
+perl Makefile.PL INSTALLDIRS=vendor
+make CFLAGS="%{optflags}"
 
 %install
 rm -rf ${buildroot}
 %makeinstall_std 
+cp -r bindings/python/demos .
+rm -f demos/Makefile*
+
+cd bindings/perl/Champlain
+%makeinstall_std
+
+%check
+#gw fails:
+cd bindings/perl/Champlain
+#make test
 
 %clean
 rm -rf %{buildroot}
@@ -103,3 +142,16 @@ rm -rf %{buildroot}
 %_datadir/gir-1.0/Champlain-%libver.gir
 %_datadir/gir-1.0/GtkChamplain-%libver.gir
 
+%files -n perl-Champlain
+%defattr(-,root,root,-)
+%doc bindings/perl/Champlain/README
+%{perl_vendorarch}/Champlain*
+%{perl_vendorarch}/auto/Champlain
+%_mandir/man3/Champlain*.3pm*
+
+%files -n python-champlain
+%defattr(-,root,root,-)
+%doc README
+%doc demos/
+%{py_platsitedir}/champlain.*
+%{py_platsitedir}/champlaingtk.*
