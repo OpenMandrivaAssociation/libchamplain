@@ -21,7 +21,9 @@ BuildRequires:	clutter-gtk-devel >= 0.10
 BuildRequires: 	libsoup-devel
 BuildRequires:  gobject-introspection-devel gir-repository
 #gw python binding:
-BuildRequires:  python-clutter-gtk-devel libGConf2-devel 
+BuildRequires:  python-clutter-gtk-devel
+BuildRequires:  python-clutter-devel
+BuildRequires:  libGConf2-devel 
 BuildRequires:  pygtk2.0-devel
 #gw perl binding:
 BuildRequires: perl-Clutter perl-devel
