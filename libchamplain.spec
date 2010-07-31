@@ -10,14 +10,14 @@
 Summary:	Map view for Clutter
 Name:		libchamplain
 Version:	0.4.6
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	LGPLv2+
 Group:		Graphical desktop/GNOME 
 URL:		http://blog.pierlux.com/projects/libchamplain/en/
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 BuildRequires:	clutter-gtk-devel >= 0.10
 BuildRequires: 	libsoup-devel
-BuildRequires:  gobject-introspection-devel gir-repository
+BuildRequires:  gobject-introspection-devel
 #gw python binding:
 BuildRequires:  python-clutter-gtk-devel
 BuildRequires:  python-clutter-devel
