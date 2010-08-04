@@ -79,7 +79,7 @@ This package contains Python bindings for %{name}.
 %make
 
 %install
-rm -rf ${buildroot}
+rm -rf %{buildroot}
 %makeinstall_std 
 cp -r bindings/python/demos .
 rm -f demos/Makefile*
