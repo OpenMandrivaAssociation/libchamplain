@@ -10,7 +10,7 @@
 Summary:	Map view for Clutter
 Name:		libchamplain
 Version:	0.4.6
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	LGPLv2+
 Group:		Graphical desktop/GNOME 
 URL:		http://blog.pierlux.com/projects/libchamplain/en/
@@ -23,6 +23,7 @@ BuildRequires:  python-clutter-gtk-devel
 BuildRequires:  python-clutter-devel
 BuildRequires:  libGConf2-devel 
 BuildRequires:  pygtk2.0-devel
+BuildRequires:  vala-devel
 #gw Csharp binding
 #BuildRequires: clutter-gtk-sharp
 BuildRequires:	gtk-doc
@@ -75,7 +76,7 @@ This package contains Python bindings for %{name}.
 %setup -q
 
 %build
-%configure2_5x --disable-static --enable-gtk-doc --enable-python
+%configure2_5x --disable-static --enable-gtk-doc --enable-python --enable-vala
 %make
 
 %install
@@ -118,6 +119,7 @@ rm -rf %{buildroot}
 %{_includedir}/%{name}-gtk-%{libgtkver}/champlain-gtk/*.h
 %_datadir/gir-1.0/Champlain-%libver.gir
 %_datadir/gir-1.0/GtkChamplain-%libver.gir
+%_datadir/vala/vapi/champlain*
 
 %files -n python-champlain
 %defattr(-,root,root,-)
