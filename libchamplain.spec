@@ -65,14 +65,14 @@ Obsoletes:	%mklibname champlain 0.3 -d
 This package contains development files for %{name}.
 
 
-%package -n python-champlain
-Summary: Python bindings for %name
-Group: Development/Python
-Requires: %libname = %{version}
-Requires: python-clutter-gtk
-
-%description -n python-champlain
-This package contains Python bindings for %{name}.
+#%package -n python-champlain
+#Summary: Python bindings for %name
+#Group: Development/Python
+#Requires: %libname = %{version}
+#Requires: python-clutter-gtk
+#
+#%description -n python-champlain
+#This package contains Python bindings for %{name}.
 
 %prep
 %setup -q
