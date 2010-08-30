@@ -1,6 +1,6 @@
-%define libver 0.4
+%define libver 0.8
 %define libgtkver %{libver}
-%define major 0
+%define major 1
 %define gtkmajor %{major}
 
 %define libname		%mklibname champlain %{libver} %{major}
@@ -9,18 +9,20 @@
 
 Summary:	Map view for Clutter
 Name:		libchamplain
-Version:	0.4.7
+Version:	0.7.1
 Release:	%mkrel 1
 License:	LGPLv2+
 Group:		Graphical desktop/GNOME 
 URL:		http://blog.pierlux.com/projects/libchamplain/en/
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 BuildRequires:	clutter-gtk-devel >= 0.10
+BuildRequires:  memphis-devel >= 0.2
 BuildRequires: 	libsoup-devel
 BuildRequires:  gobject-introspection-devel
 #gw python binding:
 BuildRequires:  python-clutter-gtk-devel
 BuildRequires:  python-clutter-devel
+BuildRequires:  python-memphis-devel
 BuildRequires:  libGConf2-devel 
 BuildRequires:  pygtk2.0-devel
 BuildRequires:  vala-devel
@@ -74,16 +76,16 @@ This package contains Python bindings for %{name}.
 
 %prep
 %setup -q
+%apply_patches
+#autoreconf -fi
 
 %build
-%configure2_5x --disable-static --enable-gtk-doc --enable-python --enable-vala
+%configure2_5x --disable-static --enable-gtk-doc --enable-python --enable-introspection 
 %make
 
 %install
 rm -rf %{buildroot}
 %makeinstall_std 
-cp -r bindings/python/demos .
-rm -f demos/Makefile*
 
 %clean
 rm -rf %{buildroot}
@@ -107,6 +109,7 @@ rm -rf %{buildroot}
 %{_libdir}/%{name}-gtk-%{libgtkver}.so
 %{_libdir}/pkgconfig/champlain-%{libver}.pc
 %{_libdir}/pkgconfig/champlain-gtk-%{libgtkver}.pc
+%{_libdir}/pkgconfig/champlain-memphis-%{libgtkver}.pc
 %dir %{_datadir}/gtk-doc/html/%{name}
 %dir %{_datadir}/gtk-doc/html/%{name}-gtk
 %doc %{_datadir}/gtk-doc/html/%{name}/*
@@ -121,9 +124,8 @@ rm -rf %{buildroot}
 %_datadir/gir-1.0/GtkChamplain-%libver.gir
 %_datadir/vala/vapi/champlain*
 
-%files -n python-champlain
-%defattr(-,root,root,-)
-%doc README
-%doc demos/
-%{py_platsitedir}/champlain.*
-%{py_platsitedir}/champlaingtk.*
+#%files -n python-champlain
+#%defattr(-,root,root,-)
+#%doc README
+#%{py_platsitedir}/champlain.*
+#%{py_platsitedir}/champlaingtk.*
