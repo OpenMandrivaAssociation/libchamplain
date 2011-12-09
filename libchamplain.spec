@@ -63,7 +63,7 @@ GObject Introspection interface description for GData.
 %package -n %{girgtk}
 Summary:	GObject Introspection interface description for GData
 Group:		System/Libraries
-Requires:	%{libnamegtk} = %{version}-%{release}
+Requires:	%{libgtk} = %{version}-%{release}
 
 %description -n %{girgtk}
 GObject Introspection interface description for GData.
