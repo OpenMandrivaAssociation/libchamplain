@@ -17,6 +17,7 @@ License:	LGPLv2+
 Group:		Graphical desktop/GNOME 
 URL:		http://blog.pierlux.com/projects/libchamplain/en/
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.xz
+Patch0:		libchamplain-0.12.0_g_thread_init.patch
 BuildRequires:	chrpath
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gdk-3.0)
