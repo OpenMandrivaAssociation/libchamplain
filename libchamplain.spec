@@ -12,7 +12,7 @@
 Summary:	Map view for Clutter
 Name:		libchamplain
 Version:	0.12.2
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		Graphical desktop/GNOME 
 URL:		http://blog.pierlux.com/projects/libchamplain/en/
@@ -55,7 +55,6 @@ This package contains the GTK+ view for %{name}
 %package -n %{girname}
 Summary:	GObject Introspection interface description for GData
 Group:		System/Libraries
-Requires:	%{libname} = %{version}-%{release}
 
 %description -n %{girname}
 GObject Introspection interface description for GData.
@@ -73,6 +72,8 @@ Summary:	Development files for %{name}
 Group:		Development/GNOME and GTK+
 Requires:	%{libname} = %{version}-%{release}
 Requires:	%{libgtk} = %{version}-%{release}
+Requires:	%{girname} = %{version}-%{release}
+Requires:	%{girgtk} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%mklibname champlain 0.3 -d
 
@@ -98,7 +99,6 @@ sed --in-place --expression 's! -shared ! -Wl,--as-needed\0!g' libtool
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std 
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
