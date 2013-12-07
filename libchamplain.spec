@@ -12,7 +12,7 @@
 Summary:	Map view for Clutter
 Name:		libchamplain
 Version:	0.12.5
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		Graphical desktop/GNOME 
 Url:		http://blog.pierlux.com/projects/libchamplain/en/
