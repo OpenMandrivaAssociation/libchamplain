@@ -11,10 +11,10 @@
 
 Summary:	Map view for Clutter
 Name:		libchamplain
-Version:	0.12.9
+Version:	 0.12.10
 Release:	2
 License:	LGPLv2+
-Group:		Graphical desktop/GNOME 
+Group:		Graphical desktop/GNOME
 URL:		http://blog.pierlux.com/projects/libchamplain/en/
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/0.12/%{name}-%{version}.tar.xz
 Patch0:		libchamplain-0.12.2-fix-linking.patch
@@ -92,7 +92,7 @@ autoreconf -fi
 	--disable-static \
 	--enable-gtk-doc \
 	--enable-python \
-	--enable-introspection 
+	--enable-introspection
 
 # Omit unused direct shared library dependencies.
 sed --in-place --expression 's! -shared ! -Wl,--as-needed\0!g' libtool
@@ -100,7 +100,7 @@ sed --in-place --expression 's! -shared ! -Wl,--as-needed\0!g' libtool
 %make
 
 %install
-%makeinstall_std 
+%makeinstall_std
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
 # Remove rpaths.
