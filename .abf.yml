@@ -1,7 +1,8 @@
 removed_sources:
+  libchamplain-0.12.10.tar.xz: 8d32b4a3c20470e36065990a8bb4dabb675017d9
   libchamplain-0.12.3.tar.xz: 5499fd874e2e438cf698cb258275226bc00b340b
   libchamplain-0.12.4.tar.xz: 9c6352cecb85662d2c186ba7b48f7e7053d7149d
   libchamplain-0.12.7.tar.xz: e12bcd57e1f036fb3c472740b503126f5eb31541
   libchamplain-0.12.9.tar.xz: bd4b227abb907829ad692d895507bf5f32bc601c
 sources:
-  libchamplain-0.12.10.tar.xz: 8d32b4a3c20470e36065990a8bb4dabb675017d9
+  libchamplain-0.12.12.tar.xz: ac69c2d413b823d5b49c0c730a9889ae4c58bb5f
