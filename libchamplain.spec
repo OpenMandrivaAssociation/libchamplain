@@ -1,6 +1,6 @@
 %define oname		champlain
 
-%define api			0.12
+%define api		0.12
 %define major		0
 %define gir_major	0.12
 %define libname		%mklibname champlain %{api} %{major}
@@ -11,12 +11,12 @@
 
 Summary:	Map view for Clutter
 Name:		libchamplain
-Version:	 0.12.12
-Release:	4
+Version:	0.12.16
+Release:	1
 License:	LGPLv2+
 Group:		Graphical desktop/GNOME
 URL:		http://blog.pierlux.com/projects/libchamplain/en/
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/0.12/%{name}-%{version}.tar.xz
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libchamplain/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Patch0:		libchamplain-0.12.2-fix-linking.patch
 BuildRequires:	chrpath
 BuildRequires:	pkgconfig(clutter-1.0)
@@ -139,4 +139,3 @@ chrpath --delete %{buildroot}%{_libdir}/%{name}-gtk-*.so.*
 %{_datadir}/gir-1.0/Champlain-%{gir_major}.gir
 %{_datadir}/gir-1.0/GtkChamplain-%{gir_major}.gir
 %{_datadir}/vala/vapi/champlain*
-
