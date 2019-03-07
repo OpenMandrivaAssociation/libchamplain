@@ -11,8 +11,8 @@
 
 Summary:	Map view for Clutter
 Name:		libchamplain
-Version:	0.12.16
-Release:	5
+Version:	0.12.19
+Release:	1
 License:	LGPLv2+
 Group:		Graphical desktop/GNOME
 URL:		http://blog.pierlux.com/projects/libchamplain/en/
@@ -82,13 +82,12 @@ Obsoletes:	%mklibname champlain 0.3 -d
 This package contains development files for %{name}.
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 
 autoreconf -fi
 
 %build
-%configure2_5x \
+%configure \
 	--disable-static \
 	--enable-gtk-doc \
 	--enable-python \
@@ -97,10 +96,10 @@ autoreconf -fi
 # Omit unused direct shared library dependencies.
 sed --in-place --expression 's! -shared ! -Wl,--as-needed\0!g' libtool
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
 # Remove rpaths.
