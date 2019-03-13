@@ -89,9 +89,6 @@ This package contains development files for %{name}.
 %meson
 %meson_build
 
-# Omit unused direct shared library dependencies.
-sed --in-place --expression 's! -shared ! -Wl,--as-needed\0!g' libtool
-
 %install
 %meson_install
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
