@@ -19,6 +19,7 @@ URL:		http://blog.pierlux.com/projects/libchamplain/en/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libchamplain/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Patch0:		libchamplain-0.12.2-fix-linking.patch
 BuildRequires:	chrpath
+BuildRequires:	meson
 BuildRequires:	pkgconfig(clutter-1.0)
 BuildRequires:	pkgconfig(clutter-gtk-1.0)
 BuildRequires:	pkgconfig(gdk-3.0)
@@ -84,22 +85,15 @@ This package contains development files for %{name}.
 %prep
 %autosetup -p1
 
-autoreconf -fi
-
 %build
-%configure \
-	--disable-static \
-	--enable-gtk-doc \
-	--enable-python \
-	--enable-introspection
+%meson
+%meson_build
 
 # Omit unused direct shared library dependencies.
 sed --in-place --expression 's! -shared ! -Wl,--as-needed\0!g' libtool
 
-%make_build
-
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
 # Remove rpaths.
