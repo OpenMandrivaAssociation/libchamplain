@@ -31,6 +31,7 @@ BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(libsoup-gnome-2.4)
 BuildRequires:	pkgconfig(memphis-0.2)
 BuildRequires:	vala-tools
+BuildRequires:	vala-devel
 
 %description
 Libchamplain is a C library aimed to provide a ClutterActor to display
@@ -86,7 +87,12 @@ This package contains development files for %{name}.
 %autosetup -p1
 
 %build
-%meson
+%meson \
+        -Dmemphis=true \
+	      -Dintrospection=true \
+	      -Dvapi=true \
+	      -Dwidgetry=true \
+	      -Dgtk_doc=true
 %meson_build
 
 %install
