@@ -131,7 +131,7 @@ chrpath --delete %{buildroot}%{_libdir}/%{name}-gtk-*.so.*
 #%{_includedir}/%{name}-%{api}/champlain/*.h
 #%dir %{_includedir}/%{name}-gtk-%{api}
 #%dir %{_includedir}/%{name}-gtk-%{api}/champlain-gtk/
-%{_includedir}/%{name}-gtk-%{api}/champlain-gtk/*.h
+#%{_includedir}/%{name}-gtk-%{api}/champlain-gtk/*.h
 %{_datadir}/gir-1.0/Champlain-%{gir_major}.gir
 %{_datadir}/gir-1.0/GtkChamplain-%{gir_major}.gir
 %{_datadir}/vala/vapi/champlain*
