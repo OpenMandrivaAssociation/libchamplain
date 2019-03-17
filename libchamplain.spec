@@ -122,15 +122,15 @@ chrpath --delete %{buildroot}%{_libdir}/%{name}-gtk-*.so.*
 %{_libdir}/pkgconfig/champlain-%{api}.pc
 %{_libdir}/pkgconfig/champlain-gtk-%{api}.pc
 # %{_libdir}/pkgconfig/champlain-memphis-%{api}.pc
-%dir %{_datadir}/gtk-doc/html/%{name}-%{api}
-%dir %{_datadir}/gtk-doc/html/%{name}-gtk-%{api}
-%doc %{_datadir}/gtk-doc/html/%{name}-%{api}/*
-%doc %{_datadir}/gtk-doc/html/%{name}-gtk-%{api}/*
-%dir %{_includedir}/%{name}-%{api}
-%dir %{_includedir}/%{name}-%{api}/champlain
-%{_includedir}/%{name}-%{api}/champlain/*.h
-%dir %{_includedir}/%{name}-gtk-%{api}
-%dir %{_includedir}/%{name}-gtk-%{api}/champlain-gtk/
+#%dir %{_datadir}/gtk-doc/html/%{name}-%{api}
+#%dir %{_datadir}/gtk-doc/html/%{name}-gtk-%{api}
+#%doc %{_datadir}/gtk-doc/html/%{name}-%{api}/*
+#%doc %{_datadir}/gtk-doc/html/%{name}-gtk-%{api}/*
+#%dir %{_includedir}/%{name}-%{api}
+#%dir %{_includedir}/%{name}-%{api}/champlain
+#%{_includedir}/%{name}-%{api}/champlain/*.h
+#%dir %{_includedir}/%{name}-gtk-%{api}
+#%dir %{_includedir}/%{name}-gtk-%{api}/champlain-gtk/
 %{_includedir}/%{name}-gtk-%{api}/champlain-gtk/*.h
 %{_datadir}/gir-1.0/Champlain-%{gir_major}.gir
 %{_datadir}/gir-1.0/GtkChamplain-%{gir_major}.gir
