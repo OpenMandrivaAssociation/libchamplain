@@ -19,6 +19,7 @@ URL:		http://blog.pierlux.com/projects/libchamplain/en/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libchamplain/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Patch0:		libchamplain-0.12.2-fix-linking.patch
 BuildRequires:	chrpath
+BuildRequires:	meson
 BuildRequires:	pkgconfig(clutter-1.0)
 BuildRequires:	pkgconfig(clutter-gtk-1.0)
 BuildRequires:	pkgconfig(gdk-3.0)
@@ -30,6 +31,7 @@ BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(libsoup-gnome-2.4)
 BuildRequires:	pkgconfig(memphis-0.2)
 BuildRequires:	vala-tools
+BuildRequires:	vala-devel
 
 %description
 Libchamplain is a C library aimed to provide a ClutterActor to display
@@ -84,22 +86,17 @@ This package contains development files for %{name}.
 %prep
 %autosetup -p1
 
-autoreconf -fi
-
 %build
-%configure \
-	--disable-static \
-	--enable-gtk-doc \
-	--enable-python \
-	--enable-introspection
-
-# Omit unused direct shared library dependencies.
-sed --in-place --expression 's! -shared ! -Wl,--as-needed\0!g' libtool
-
-%make_build
+%meson \
+        -Dmemphis=true \
+	      -Dintrospection=true \
+	      -Dvapi=true \
+	      -Dwidgetry=true \
+	      -Dgtk_doc=true
+%meson_build
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
 # Remove rpaths.
@@ -125,16 +122,12 @@ chrpath --delete %{buildroot}%{_libdir}/%{name}-gtk-*.so.*
 %{_libdir}/pkgconfig/champlain-%{api}.pc
 %{_libdir}/pkgconfig/champlain-gtk-%{api}.pc
 # %{_libdir}/pkgconfig/champlain-memphis-%{api}.pc
-%dir %{_datadir}/gtk-doc/html/%{name}-%{api}
-%dir %{_datadir}/gtk-doc/html/%{name}-gtk-%{api}
-%doc %{_datadir}/gtk-doc/html/%{name}-%{api}/*
-%doc %{_datadir}/gtk-doc/html/%{name}-gtk-%{api}/*
-%dir %{_includedir}/%{name}-%{api}
-%dir %{_includedir}/%{name}-%{api}/champlain
-%{_includedir}/%{name}-%{api}/champlain/*.h
-%dir %{_includedir}/%{name}-gtk-%{api}
-%dir %{_includedir}/%{name}-gtk-%{api}/champlain-gtk/
-%{_includedir}/%{name}-gtk-%{api}/champlain-gtk/*.h
+%dir %{_datadir}/gtk-doc/
+#%dir %{_datadir}/gtk-doc/html/%{name}-gtk-%{api}
+%doc %{_datadir}/gtk-doc/html*
+#%doc %{_datadir}/gtk-doc/html/%{name}-gtk-%{api}/*
+%dir %{_includedir}/champlain-%{api}/
+%{_includedir}/champlain-%{api}/champlain*
 %{_datadir}/gir-1.0/Champlain-%{gir_major}.gir
 %{_datadir}/gir-1.0/GtkChamplain-%{gir_major}.gir
 %{_datadir}/vala/vapi/champlain*
