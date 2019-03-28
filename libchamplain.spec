@@ -124,10 +124,10 @@ chrpath --delete %{buildroot}%{_libdir}/%{name}-gtk-*.so.*
 # %{_libdir}/pkgconfig/champlain-memphis-%{api}.pc
 #%dir %{_datadir}/gtk-doc/html/%{name}-%{api}
 #%dir %{_datadir}/gtk-doc/html/%{name}-gtk-%{api}
-%doc %{_datadir}/gtk-doc/html/%{name}-%{api}/*
-%doc %{_datadir}/gtk-doc/html/%{name}-gtk-%{api}/*
-%{_includedir}/%{name}-%{api}/champlain-gtk/*
-%{_includedir}/%{name}-%{api}/champlain/*
+#%doc %{_datadir}/gtk-doc/html/%{name}-%{api}/*
+#%doc %{_datadir}/gtk-doc/html/%{name}-gtk-%{api}/*
+#%{_includedir}/%{name}-%{api}/champlain-gtk/*
+#%{_includedir}/%{name}-%{api}/champlain/*
 %{_datadir}/gir-1.0/Champlain-%{gir_major}.gir
 %{_datadir}/gir-1.0/GtkChamplain-%{gir_major}.gir
 %{_datadir}/vala/vapi/champlain*
