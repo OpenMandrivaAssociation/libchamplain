@@ -12,12 +12,12 @@
 Summary:	Map view for Clutter
 Name:		libchamplain
 Version:	0.12.20
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		Graphical desktop/GNOME
 URL:		http://blog.pierlux.com/projects/libchamplain/en/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libchamplain/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
-#Patch0:		libchamplain-0.12.2-fix-linking.patch
+
 BuildRequires:	chrpath
 BuildRequires:	meson
 BuildRequires:	pkgconfig(clutter-1.0)
