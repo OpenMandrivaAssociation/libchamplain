@@ -29,6 +29,7 @@ BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gtk-doc)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(libsoup-gnome-2.4)
+BuildRequires:	pkgconfig(libsoup-3.0)
 BuildRequires:	pkgconfig(memphis-0.2)
 BuildRequires:	vala-tools
 BuildRequires:	vala-devel
