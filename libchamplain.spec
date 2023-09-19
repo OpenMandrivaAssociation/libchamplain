@@ -12,11 +12,11 @@
 Summary:	Map view for Clutter
 Name:		libchamplain
 Version:	0.12.21
-Release:	3
+Release:	4
 License:	LGPLv2+
 Group:		Graphical desktop/GNOME
-URL:		http://blog.pierlux.com/projects/libchamplain/en/
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libchamplain/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
+URL:		https://blog.pierlux.com/projects/libchamplain/en/
+Source0:	https://ftp.gnome.org/pub/GNOME/sources/libchamplain/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 
 BuildRequires:	chrpath
 BuildRequires:	meson
